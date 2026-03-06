@@ -1,0 +1,596 @@
+/* ================================
+   XBAC Tester — Styles
+   ================================ */
+
+:root {
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --text-dim: #6e7681;
+  --green: #107C10;
+  --green-bright: #0fec32;
+  --green-glow: rgba(15, 236, 50, 0.35);
+  --red: #f85149;
+  --yellow: #e3b341;
+  --blue: #58a6ff;
+  --body-bg: #1c1f26;
+  --btn-bg: #272b33;
+  --btn-border: #3d444d;
+  --btn-active-bg: #0fec32;
+  --btn-active-text: #0d1117;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- Tabs ---- */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 12px 16px 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.tab {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 10px 28px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  user-select: none;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  color: var(--green-bright);
+  border-bottom-color: var(--green-bright);
+}
+
+/* ---- Status Bar ---- */
+.status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 12px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.status.connected .status-dot {
+  background: var(--green-bright);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+.status.connected .status-text {
+  color: var(--text);
+}
+
+/* ---- Views ---- */
+.view {
+  display: none;
+  flex: 1;
+  min-height: 0;
+}
+
+.view.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================================
+   CONTROLLER VIEW
+   ================================ */
+.controller-wrap {
+  width: 100%;
+  max-width: 680px;
+  padding: 0 16px;
+}
+
+/* Shoulder Buttons */
+.shoulders {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  margin-bottom: 6px;
+}
+
+.shoulder-group {
+  display: flex;
+  gap: 8px;
+}
+
+/* Controller Body */
+.controller-body {
+  background: var(--body-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px 20px 20px;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Upper Section: D-pad, Center, Face */
+.upper-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.group-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* D-Pad */
+.dpad {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.dpad-row {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.dpad-center {
+  width: 32px;
+  height: 32px;
+  background: var(--body-bg);
+  border-radius: 4px;
+}
+
+.dpad-btn {
+  width: 32px;
+  height: 32px;
+  font-size: 10px;
+}
+
+/* Face Buttons (Diamond) */
+.face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.face-row {
+  display: flex;
+  gap: 3px;
+}
+
+.face-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.y-color.active { background: #e3b341; color: #000; box-shadow: 0 0 16px rgba(227, 179, 65, 0.5); }
+.x-color.active { background: #58a6ff; color: #000; box-shadow: 0 0 16px rgba(88, 166, 255, 0.5); }
+.b-color.active { background: #f85149; color: #fff; box-shadow: 0 0 16px rgba(248, 81, 73, 0.5); }
+.a-color.active { background: var(--green-bright); color: #000; box-shadow: 0 0 16px var(--green-glow); }
+
+/* Center Section */
+.center-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-top: 4px;
+}
+
+.system-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.sys-btn {
+  width: auto;
+  padding: 6px 10px;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  height: 28px;
+}
+
+.xbox-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.xbox-btn.active {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+}
+
+.stick-row {
+  display: flex;
+  gap: 40px;
+}
+
+.stick-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Analog Stick Visuals */
+.analog-row {
+  display: flex;
+  gap: 32px;
+}
+
+.analog-stick {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.analog-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  position: absolute;
+  transition: background 0.15s;
+}
+
+.analog-dot.moved {
+  background: var(--green-bright);
+  box-shadow: 0 0 6px var(--green-glow);
+}
+
+.analog-label {
+  position: absolute;
+  bottom: -14px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* Large Pads (XBAC Signature) */
+.large-pads {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.large-pad {
+  flex: 1;
+  height: 80px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  cursor: default;
+}
+
+.pad-letter {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.pad-sub {
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  opacity: 0.6;
+}
+
+/* ---- Generic Button Styles ---- */
+.ctrl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: 6px;
+  color: var(--text-dim);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+  transition: background 0.1s, color 0.1s, box-shadow 0.1s, border-color 0.1s, transform 0.08s;
+}
+
+.ctrl-btn.active {
+  background: var(--btn-active-bg);
+  color: var(--btn-active-text);
+  border-color: var(--btn-active-bg);
+  box-shadow: 0 0 16px var(--green-glow);
+  transform: scale(1.05);
+}
+
+.trigger-btn {
+  width: 52px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.bumper-btn {
+  width: 52px;
+  height: 26px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Last Input */
+.last-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 8px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.last-label {
+  color: var(--text-dim);
+  font-size: 9px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.last-value {
+  color: var(--green-bright);
+  font-weight: 700;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* ================================
+   GAME VIEW
+   ================================ */
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0a0e14;
+}
+
+#view-game.active {
+  padding: 16px;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.game-score {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(13, 17, 23, 0.75);
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.game-overlay.hidden {
+  opacity: 0;
+}
+
+.overlay-text {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.overlay-text .score-line {
+  font-size: 48px;
+  color: var(--green-bright);
+  display: block;
+  margin: 8px 0;
+}
+
+.overlay-text .sub {
+  font-size: 13px;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+  display: block;
+  margin-top: 12px;
+}
+
+/* Mini input indicator in game view */
+.game-input-indicator {
+  position: absolute;
+  top: 16px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  opacity: 0.5;
+}
+
+.game-input-indicator .input-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: background 0.1s, box-shadow 0.1s;
+}
+
+.game-input-indicator .input-dot.flash {
+  background: var(--green-bright);
+  box-shadow: 0 0 8px var(--green-glow);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 600px) {
+  .controller-body {
+    padding: 16px 12px 14px;
+  }
+
+  .upper-section {
+    gap: 6px;
+  }
+
+  .face-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .dpad-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 9px;
+  }
+
+  .dpad-center {
+    width: 28px;
+    height: 28px;
+  }
+
+  .trigger-btn, .bumper-btn {
+    width: 42px;
+    font-size: 10px;
+  }
+
+  .large-pad {
+    height: 64px;
+  }
+
+  .pad-letter {
+    font-size: 22px;
+  }
+
+  .sys-btn {
+    padding: 4px 7px;
+    font-size: 8px;
+  }
+
+  .xbox-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .analog-stick {
+    width: 38px;
+    height: 38px;
+  }
+
+  .stick-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 10px;
+  }
+
+  .game-container {
+    border-radius: 0;
+    border: none;
+    max-height: none;
+  }
+
+  #view-game.active {
+    padding: 0;
+  }
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XBAC Tester</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+</head>
+<body>
+  <div id="app">
+    <!-- Tab Bar -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="controller">CONTROLLER</button>
+      <button class="tab" data-tab="game">GAME</button>
+      <div class="tab-indicator"></div>
+    </nav>
+
+    <!-- Connection Status -->
+    <div class="status" id="status">
+      <span class="status-dot"></span>
+      <span class="status-text">No controller detected &mdash; plug in via USB</span>
+    </div>
+
+    <!-- ======== CONTROLLER VIEW ======== -->
+    <div class="view active" id="view-controller">
+      <div class="controller-wrap">
+        <!-- Shoulder Buttons (above body) -->
+        <div class="shoulders">
+          <div class="shoulder-group">
+            <div class="ctrl-btn trigger-btn" data-btn="6">LT</div>
+            <div class="ctrl-btn bumper-btn" data-btn="4">LB</div>
+          </div>
+          <div class="shoulder-group">
+            <div class="ctrl-btn bumper-btn" data-btn="5">RB</div>
+            <div class="ctrl-btn trigger-btn" data-btn="7">RT</div>
+          </div>
+        </div>
+
+        <!-- Controller Body -->
+        <div class="controller-body">
+          <!-- Upper section -->
+          <div class="upper-section">
+            <!-- D-Pad -->
+            <div class="input-group">
+              <div class="group-label">D-PAD</div>
+              <div class="dpad">
+                <div class="ctrl-btn dpad-btn" data-btn="12">&#9650;</div>
+                <div class="dpad-row">
+                  <div class="ctrl-btn dpad-btn" data-btn="14">&#9664;</div>
+                  <div class="dpad-center"></div>
+                  <div class="ctrl-btn dpad-btn" data-btn="15">&#9654;</div>
+                </div>
+                <div class="ctrl-btn dpad-btn" data-btn="13">&#9660;</div>
+              </div>
+            </div>
+
+            <!-- Center / System Buttons -->
+            <div class="center-section">
+              <div class="system-row">
+                <div class="ctrl-btn sys-btn" data-btn="8">VIEW</div>
+                <div class="ctrl-btn xbox-btn" data-btn="16">&#11199;</div>
+                <div class="ctrl-btn sys-btn" data-btn="9">MENU</div>
+              </div>
+              <!-- Stick Clicks -->
+              <div class="stick-row">
+                <div class="ctrl-btn stick-btn" data-btn="10">LS</div>
+                <div class="ctrl-btn stick-btn" data-btn="11">RS</div>
+              </div>
+              <!-- Analog Sticks -->
+              <div class="analog-row">
+                <div class="analog-stick" id="stick-left">
+                  <div class="analog-dot" id="dot-left"></div>
+                  <div class="analog-label">L STICK</div>
+                </div>
+                <div class="analog-stick" id="stick-right">
+                  <div class="analog-dot" id="dot-right"></div>
+                  <div class="analog-label">R STICK</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Face Buttons -->
+            <div class="input-group">
+              <div class="group-label">FACE</div>
+              <div class="face">
+                <div class="ctrl-btn face-btn y-color" data-btn="3">Y</div>
+                <div class="face-row">
+                  <div class="ctrl-btn face-btn x-color" data-btn="2">X</div>
+                  <div class="ctrl-btn face-btn b-color" data-btn="1">B</div>
+                </div>
+                <div class="ctrl-btn face-btn a-color" data-btn="0">A</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Large Pads (XBAC Signature Feature) -->
+          <div class="large-pads">
+            <div class="ctrl-btn large-pad a-color" data-btn="0">
+              <span class="pad-letter">A</span>
+              <span class="pad-sub">LEFT PAD</span>
+            </div>
+            <div class="ctrl-btn large-pad b-color" data-btn="1">
+              <span class="pad-letter">B</span>
+              <span class="pad-sub">RIGHT PAD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Last Input Display -->
+      <div class="last-input" id="last-input">
+        <span class="last-label">LAST INPUT</span>
+        <span class="last-value" id="last-value">&mdash;</span>
+      </div>
+    </div>
+
+    <!-- ======== GAME VIEW ======== -->
+    <div class="view" id="view-game">
+      <div class="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div class="game-score" id="game-score">0</div>
+        <div class="game-overlay" id="game-overlay">
+          <div class="overlay-text" id="overlay-text">PRESS ANY BUTTON</div>
+        </div>
+        <!-- Mini input indicator in game -->
+        <div class="game-input-indicator" id="game-input">
+          <span class="input-dot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
