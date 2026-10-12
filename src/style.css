@@ -594,3 +594,6 @@ body {
     padding: 0;
   }
 }
+
+/* Made-by credit (house standard) */
+.made-by{text-align:center;font-family:var(--font-mono,"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,monospace);font-size:11px;letter-spacing:.08em;line-height:1.5;color:#8b8b8b;margin:40px auto 24px;padding:0 16px}.made-by a{color:inherit;text-decoration:underline;text-underline-offset:3px}@media print{.made-by{display:none}}
